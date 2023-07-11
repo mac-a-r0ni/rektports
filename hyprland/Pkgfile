@@ -1,0 +1,56 @@
+# Description: highly customizable dynamic tiling Wayland compositor
+# URL: https://github.com/hyprwm/Hyprland
+# Maintainer: mac-a-r0ni, j at lngn dot net
+# Depends on: cairo xorg-gccmakedep libdisplay-info libdrm libglvnd xorg-xf86-input-libinput libliftoff xorg-libx11 xorg-libxcb xorg-libxcomposite xorg-libxfixes libxkbcommon xorg-libxrender mesa pango xorg-libpixman polkit seatd wayland wayland-protocols xorg-xcb-proto xorg-xcb-util xorg-xcb-util-errors xorg-xcb-util-keysyms xorg-xcb-util-renderutil xorg-xcb-util-wm xorg-xinput xorg-xwayland cmake gdb meson ninja vulkan-headers xorg-xorgproto
+# This mess is brought to you by artix/arch linux cuz this program is a absolute nightmare
+
+name=hyprland
+version=0.26.0
+release=1
+source=(https://github.com/hyprwm/Hyprland/releases/download/v0.26.0/source-v0.26.0.tar.gz)
+
+build() {
+  cd $name-$version
+	ln -sf hyprland-source "$_archive"
+	cd "$_archive"
+	make fixwlr
+	sed -i -e '/^release:/{n;s/-D/-DCMAKE_SKIP_RPATH=ON -D/}' Makefile
+
+	cd "$_archive"
+	pushd subprojects/wlroots
+	meson build/ --prefix="$SRC/tmpwlr" --buildtype=release
+	ninja -C build/
+	mkdir -p "$SRC/tmpwlr"
+	ninja -C build/ install
+	popd
+	pushd subprojects/udis86
+	cmake --no-warn-unused-cli -DCMAKE_BUILD_TYPE:STRING=Release -DNO_SYSTEMD:STRING=true -S . -B./build -G Ninja
+	cmake --build ./build --config Release --target all
+	popd
+	make protocols
+	make release
+	pushd hyprctl
+	make all
+
+	cd "$_archive"
+	find src -name '*.hpp' -exec install -Dm0644 {} "$PKG/usr/include/hyprland/{}" \;
+	pushd subprojects/wlroots/include
+	find . -name '*.h' -exec install -Dm0644 {} "$PKG/usr/include/hyprland/wlroots/{}" \;
+	popd
+	pushd subprojects/wlroots/build/include
+	find . -name '*.h' -exec install -Dm0644 {} "$PKG/usr/include/hyprland/wlroots/{}" \;
+	popd
+	mkdir -p "$PKG/usr/include/hyprland/protocols"
+	cp protocols/*-protocol.h "$PKG/usr/include/hyprland/protocols"
+	pushd build
+	cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+	popd
+	install -Dm0644 -t "$PKG/usr/share/pkgconfig" build/hyprland.pc
+	install -Dm0755 -t "$PKG/usr/bin" build/Hyprland
+	install -Dm0755 -t "$PKG/usr/bin" hyprctl/hyprctl
+	install -Dm0644 -t "$PKG/usr/share/$name" assets/*.png
+	install -Dm0644 -t "$PKG/usr/share/wayland-sessions" "example/$name.desktop"
+	install -Dm0644 -t "$PKG/usr/share/$name" "example/$name.conf"
+	install -Dm0755 -t "$PKG/usr/lib" "$SRC/tmpwlr/lib/libwlroots.so.12032"
+
+}
