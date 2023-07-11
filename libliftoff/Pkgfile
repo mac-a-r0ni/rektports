@@ -1,0 +1,21 @@
+# Description: Lightweight KMS plane library
+# URL: https://gitlab.freedesktop.org/emersion/libliftoff
+# Maintainer: mac-a-r0ni, j at lngn dot net
+# Depends on: meson libdrm
+
+name=libliftoff
+version=0.4.1
+release=1
+source=(https://gitlab.freedesktop.org/emersion/libliftoff/-/archive/v0.4.1/libliftoff-v0.4.1.tar.bz2)
+
+build() {
+  cd $name-$version
+
+  meson libliftoff build
+  meson compile -C build
+
+  DESTDIR=$PKG meson install -C build
+
+}
+
+# vim: ts=2 sw=2 et:
