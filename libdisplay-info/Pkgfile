@@ -9,9 +9,8 @@ release=1
 source=(https://gitlab.freedesktop.org/emersion/$name/-/releases/$version/downloads/$name-$version.tar.xz)
 
 build() {
-  cd $name-$version
 
-    meson setup $name-$version build
+    meson setup $name-$version build --prefix /usr
     ninja -C build
 
     DESTDIR=$PKG ninja -C build install

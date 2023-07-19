@@ -8,17 +8,19 @@ name=hyprland
 version=0.27.1
 release=1
 source=(https://github.com/hyprwm/Hyprland/releases/download/v${version}/source-v${version}.tar.gz)
+_archive=$name-$version
 
 build() {
-  cd $name-$version
-	ln -sf hyprland-source "$_archive"
-	cd "$_archive"
+#  cd $name-$version
+#	ln -sf hyprland-source "$_archive"
+#	cd "$_archive"
+	cd hyprland-source
 	make fixwlr
 	sed -i -e '/^release:/{n;s/-D/-DCMAKE_SKIP_RPATH=ON -D/}' Makefile
 
-	cd "$_archive"
+#	cd "$_archive"
 	pushd subprojects/wlroots
-	meson build/ --prefix="$SRC/tmpwlr" --buildtype=release
+	meson setup build/ --prefix="$SRC/tmpwlr" --buildtype=release
 	ninja -C build/
 	mkdir -p "$SRC/tmpwlr"
 	ninja -C build/ install
@@ -32,7 +34,7 @@ build() {
 	pushd hyprctl
 	make all
 
-	cd "$_archive"
+#	cd "$_archive"
 	find src -name '*.hpp' -exec install -Dm0644 {} "$PKG/usr/include/hyprland/{}" \;
 	pushd subprojects/wlroots/include
 	find . -name '*.h' -exec install -Dm0644 {} "$PKG/usr/include/hyprland/wlroots/{}" \;

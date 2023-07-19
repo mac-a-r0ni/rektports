@@ -9,9 +9,8 @@ release=1
 source=(https://gitlab.freedesktop.org/emersion/$name/-/archive/v${version}/$name-v${version}.tar.bz2)
 
 build() {
-  cd $name-$version
 
-  meson libliftoff build
+  meson setup $name-v${version} build --prefix /usr
   meson compile -C build
 
   DESTDIR=$PKG meson install -C build
