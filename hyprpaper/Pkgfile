@@ -1,0 +1,26 @@
+# Description: blazing fast wayland wallpaper utility with IPC controls
+# URL: https://github.com/hyprwm/hyprpaper
+# Maintainer: mac-a-r0ni, j at lngn dot net
+# Depends on: cairo libglvnd libjpeg pango wayland cmake wayland-protocols xorgproto
+
+name=hyprpaper
+version=0.3.0
+release=1
+source=(https://github.com/hyprwm/hyrpaper/archive/v${version}/$name-$version.tar.gz)
+
+build() {
+
+    cd $name-$version
+
+	cmake \
+		--no-warn-unused-cli \
+		-G "Unix Makefiles" \
+		-D CMAKE_BUILD_TYPE=Release \
+		-D CMAKE_INSTALL_PREFIX=/usr \
+		-B build
+	make protocols
+	make -C build all
+
+	install -Dm0755 -t "$PKG/usr/bin/" "build/$name"
+
+}

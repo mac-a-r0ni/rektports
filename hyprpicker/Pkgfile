@@ -1,0 +1,19 @@
+# Description: A wlroots-compatible Wayland color picker that does not suck.
+# URL: https://github.com/hyprwm/hyprpicker
+# Maintainer: mac-a-r0ni, j at lngn dot net
+# Depends on:
+
+name=hyprpicker
+version=0.1.1
+release=1
+source=(https://github.com/hyprwm/hyrpaper/archive/v${version}/$name-$version.tar.gz)
+
+build() {
+
+    cd $name-$version
+    sed -i -e 's,usr/local,usr,g' Makefile
+
+    make
+    make DESTDIR=$PKG install
+
+}
