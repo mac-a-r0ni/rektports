@@ -1,0 +1,30 @@
+# Description: xdg portal for hyprland
+# URL: https://github.com/hyprwm/xdg-desktop-portal-hyprland
+# Maintainer: mac-a-r0ni, j at lngn dot net
+# Depends on: cmake meson scdoc wayland wayland-protocols inih basu pipewire qt6-base qt6-wayland xdg-desktop-portal
+# Optional: grim slurp
+
+name=xdg-desktop-portal-hyprland
+protover=4d29e48433270a2af06b8bc711ca1fe5109746cd
+version=0.4.0
+release=1
+source=(https://github.com/hyprwm/$name/archive/v$version/v$version.tar.gz
+	https://github.com/hyprwm/hyprland-protocols/archive/$protover.tar.gz)
+
+build() {
+
+cd $SRC/$name-$version/subprojects
+    rm -rf hyprland-protocols
+    ln -sfT $SRC/hyprland-protocols-$protover hyprland-protocols
+
+cd $SRC/$name-$version
+    meson setup build --prefix /usr --libexecdir /usr/lib/$name
+    ninja -C build
+    make -C hyprland-share-picker all
+
+cd $SRC/$name-$version
+    DESTDIR=$PKG ninja -C build install
+    install -Dm0755 -t $PKG/usr/bin/ hyprland-share-picker/build/hyprland-share-picker
+
+
+}

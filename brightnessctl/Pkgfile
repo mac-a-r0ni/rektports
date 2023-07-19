@@ -1,0 +1,19 @@
+# Description: brightnessctl
+# URL: https://github.com/Hummer12007/brightnessctl
+# Maintainer: mac-a-r0ni, j at lngn dot net
+# Depends on:
+
+name=brightnessctl
+version=0.5.1
+release=1
+source=(https://github.com/Hummer12007/brightnessctl/archive/$version.tar.gz)
+
+build() {
+    cd $name-$version
+
+    make
+    make DESTDIR=$PKG install
+
+}
+
+# vim:set ts=2 sw=2 et:
