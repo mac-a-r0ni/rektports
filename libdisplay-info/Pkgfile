@@ -6,7 +6,7 @@
 name=libdisplay-info
 version=0.1.1
 release=1
-source=(https://gitlab.freedesktop.org/emersion/libdisplay-info/-/releases/0.1.1/downloads/libdisplay-info-0.1.1.tar.xz)
+source=(https://gitlab.freedesktop.org/emersion/$name/-/releases/$version/downloads/$name-$version.tar.xz)
 
 build() {
   cd $name-$version

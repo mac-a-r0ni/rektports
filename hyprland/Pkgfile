@@ -5,9 +5,9 @@
 # This mess is brought to you by artix/arch linux cuz this program is a absolute nightmare
 
 name=hyprland
-version=0.26.0
+version=0.27.1
 release=1
-source=(https://github.com/hyprwm/Hyprland/releases/download/v0.26.0/source-v0.26.0.tar.gz)
+source=(https://github.com/hyprwm/Hyprland/releases/download/v${version}/source-v${version}.tar.gz)
 
 build() {
   cd $name-$version

@@ -6,7 +6,7 @@
 name=libliftoff
 version=0.4.1
 release=1
-source=(https://gitlab.freedesktop.org/emersion/libliftoff/-/archive/v0.4.1/libliftoff-v0.4.1.tar.bz2)
+source=(https://gitlab.freedesktop.org/emersion/$name/-/archive/v${version}/$name-v${version}.tar.bz2)
 
 build() {
   cd $name-$version
