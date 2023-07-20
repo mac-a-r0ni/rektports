@@ -9,5 +9,18 @@ source=(http://rekt.lngn.net/crux-arm/files/$name-$version.tar.xz)
 
 build() {
 	cd $name-$version
-	make DESTDIR=$PKG install
+
+# for some reason the Makefile refuses to build the pkg, likely another bug in pkgmk that's
+# undiscovered until now... we're going to do this the old fashion way instead...
+
+mkdir -p $PKG/etc
+mkdir -p $PKG/usr/bin
+mkdir -p $PKG/usr/share/man/man8
+
+install -D -m 755 scripts/pkg-repgen.pl $PKG/usr/bin/pkg-repgen
+install -D -m 755 scripts/pkg-get.pl $PKG/usr/bin/pkg-get
+install -D -m 644 doc/pkg-repgen.8 $PKG/usr/share/man/man8/pkg-repgen.8
+install -D -m 644 doc/pkg-get.8 $PKG/usr/share/man/man8/pkg-get.8
+install -D -m 644 doc/pkg-get.conf $PKG/etc/pkg-get.conf
+
 }
