@@ -6,7 +6,7 @@
 name=hyprpaper
 version=0.3.0
 release=1
-source=(https://github.com/hyprwm/hyrpaper/archive/v${version}/$name-$version.tar.gz)
+source=(https://github.com/hyprwm/hyprpaper/archive/v${version}/$name-$version.tar.gz)
 
 build() {
 
