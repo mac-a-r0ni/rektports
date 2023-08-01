@@ -1,0 +1,19 @@
+# Description: CLI-based GitHub Client
+# URL: https://cli.github.com
+# Maintainer: mac-a-r0ni, j at lngn dot net
+# Depends on:
+
+name=gh
+version=2.32.1
+release=1
+source=(https://github.com/cli/cli/releases/download/v2.32.1/gh_2.32.1_linux_amd64.deb)
+
+build() {
+
+ar p gh_2.32.1_linux_amd64.deb data.tar.gz | tar xzv
+
+cd $SRC
+rm *.deb
+cp -r . $PKG
+
+}

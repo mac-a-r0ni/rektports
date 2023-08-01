@@ -1,0 +1,20 @@
+# Description: NCurses Disk Usage - Zig build repack
+# URL: https://dev.yorhel.nl/
+# Maintainer: mac-a-r0ni, j at lngn dot net
+# Depends on:
+
+name=ncdu-bin
+version=2.2.1
+release=1
+source=(https://dev.yorhel.nl/download/ncdu-$version-linux-x86_64.tar.gz ncdu.1.gz)
+
+build() {
+#  cd ncdu-$version
+
+    mkdir -p $PKG/usr/bin
+    mkdir -p $PKG/usr/share/man/man1
+
+    install -m0755 -o root -g root -p ncdu $PKG/usr/bin/
+    install -m0644 -o root -g root -p ncdu.1.gz $PKG/usr/share/man/man1/
+
+}

@@ -1,0 +1,16 @@
+# Description: NCurses Disk Usage
+# URL: https://dev.yorhel.nl/
+# Maintainer: mac-a-r0ni, j at lngn dot net
+# Depends on: ncurses
+
+name=ncdu
+version=1.18.1
+release=1
+source=(https://dev.yorhel.nl/download/$name-$version.tar.gz)
+
+build() {
+  cd $name-$version
+  ./configure --prefix=/usr
+  make install DESTDIR=$PKG
+  gzip -9 $PKG/usr/share/man/man?/*
+}
