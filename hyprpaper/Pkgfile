@@ -4,7 +4,7 @@
 # Depends on: cairo libglvnd libjpeg pango wayland cmake wayland-protocols xorgproto
 
 name=hyprpaper
-version=0.3.0
+version=0.4.0
 release=1
 source=(https://github.com/hyprwm/hyprpaper/archive/v${version}/$name-$version.tar.gz)
 
