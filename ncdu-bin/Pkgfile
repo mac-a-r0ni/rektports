@@ -4,9 +4,10 @@
 # Depends on:
 
 name=ncdu-bin
-version=2.2.1
+version=2.3
 release=1
-source=(https://dev.yorhel.nl/download/ncdu-$version-linux-x86_64.tar.gz ncdu.1.gz)
+arch=$(uname -m)
+source=(https://dev.yorhel.nl/download/ncdu-$version-linux-$arch.tar.gz ncdu.1.gz)
 
 build() {
 #  cd ncdu-$version
