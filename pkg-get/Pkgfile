@@ -4,7 +4,7 @@
 
 name=pkg-get
 version=0.4.8
-release=1
+release=2
 source=(http://rekt.lngn.net/crux-arm/files/$name-$version.tar.xz)
 
 build() {

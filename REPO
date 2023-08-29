@@ -38,7 +38,7 @@ f:b488d42300997994d15abe48af1f568b:xdg-desktop-portal-hyprland/.md5sum
 f:c74cf9063d6dd8ccae556f475e322909:xdg-desktop-portal-hyprland/Pkgfile
 f:3765586fe37e9002a781bae8f35a9bc6:ncdu-x86_64/.footprint
 f:63c5235346de4de2add1c153a08248ae:ncdu-x86_64/.md5sum
-f:4d4d8516a1ba16d5b20b1ec6bc039c93:ncdu-x86_64/Pkgfile
+f:321ed689abc037b37e83057b1187be46:ncdu-x86_64/Pkgfile
 f:92d30a938d3cf2ea8e94cbde9024554f:ncdu-x86_64/ncdu.1.gz
 f:133ccfa1d19752577aa26a247c40afc0:hyprpaper/.footprint
 f:0ac4a42bd7e05498193196bd5d7d4dea:hyprpaper/.md5sum
@@ -48,11 +48,11 @@ f:2cfacf714996649cf1c4b45236fa226d:gh/.md5sum
 f:0da202cde62f6eb753a7b9deba9ac76a:gh/Pkgfile
 f:3765586fe37e9002a781bae8f35a9bc6:ncdu-aarch64/.footprint
 f:992224eac79477eb1c653e149d0f3931:ncdu-aarch64/.md5sum
-f:4d4d8516a1ba16d5b20b1ec6bc039c93:ncdu-aarch64/Pkgfile
+f:93d8c842a934cfa7fde8d7b4b5319226:ncdu-aarch64/Pkgfile
 f:92d30a938d3cf2ea8e94cbde9024554f:ncdu-aarch64/ncdu.1.gz
 f:4ad1cad26d9aaf0931cb64b05a41c48a:hyprland/.footprint
-f:c3fbd8d66e30997563b3ad34356f2222:hyprland/.md5sum
-f:d63a60901e191d669d0df37ed2be4953:hyprland/Pkgfile
+f:7381a93dea770449bc361b88d0762db7:hyprland/.md5sum
+f:7e9c1c5a56af04cd3a6943072fdb46a9:hyprland/Pkgfile
 f:0dc0b6debe672378e59fe53b02db362c:libdisplay-info/.footprint
 f:a9420b0dd6952a897a250622cd2f2cf8:libdisplay-info/.md5sum
 f:8a7ab63d9f77e77812d7b3f538a22a12:libdisplay-info/Pkgfile
@@ -74,6 +74,6 @@ f:c50007b6834b8053f3e63bd05d7e6786:libliftoff/.md5sum
 f:20886b3437ba5ec53c50bb0bb72c039f:libliftoff/Pkgfile
 f:50c6fcd0c8b893971705c4f9fd1d83b0:README.md
 f:6581710f0234575b0b3d35d89b08d62e:pkg-get/.footprint
-f:a89a00522ab479f805200853db4483a9:pkg-get/.md5sum
-f:d2a90a1c29e3b6c112303181874234a3:pkg-get/Pkgfile
+f:1bc4b6e7568b7e0587507f88defa28a8:pkg-get/.md5sum
+f:d53f1cb679386cbebf27448ded5c4611:pkg-get/Pkgfile
 f:e3ca5d92dced7d5065a69ee9487b684d:LICENSE

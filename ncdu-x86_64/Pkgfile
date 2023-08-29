@@ -3,7 +3,7 @@
 # Maintainer: mac-a-r0ni, j at lngn dot net
 # Depends on:
 
-name=ncdu-bin
+name=ncdu-x86_64
 version=2.3
 release=1
 arch=$(uname -m)
