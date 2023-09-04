@@ -7,16 +7,17 @@ name=elogind
 version=252.9
 release=1
 source=(https://github.com/$name/$name/archive/v${version}/$name-$version.tar.gz
-	10-enable-elogind-power.rules.gz)
+	10-enable-elogind-power.rules.gz
+	elogind)
 
 build() {
 
     meson setup $name-$version build \
 	--buildtype release \
 	--prefix /usr \
-	--libexecdir /usr/lib/$name \
+	--libexecdir /usr/lib \
 	-D rootlibdir=/lib \
-	-D rootlibexecdir=/lib/$name \
+	-D rootlibexecdir=/lib \
 	-D udevrulesdir=/lib/udev/rules.d \
 	-D man=true \
 	-D html=false \
@@ -43,12 +44,15 @@ ln -sf /bin/loginctl $PKG/usr/bin/loginctl
 mkdir -p $PKG/etc/elogind/logind.conf.d/ $PKG/etc/elogind/sleep.conf.d/
 
 # Add login1 policy file that allows users in the 'power' group to shutdown/reboot the computer:
-
 mkdir -p $PKG/usr/share/polkit-1/rules.d
 zcat 10-enable-elogind-power.rules.gz > $PKG/usr/share/polkit-1/rules.d/10-enable-session-power.rules
 
 # We don't need the hidden files to make inferior package managers keep dirs:
 find $PKG -type f -name ".keep_dir" -exec rm -f {} \;
+
+# Add start/stop script
+mkdir -p $PKG/etc/rc.d
+cp elogind $PKG/etc/rc.d
 
 rm -rf $PKG/usr/share/{bash-completion,doc,locale,zsh}
 
