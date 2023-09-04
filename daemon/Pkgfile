@@ -14,9 +14,10 @@ build() {
     ./configure \
 	--prefix=/usr \
 	--enable-logind \
-	--disable-mail-test
+	--disable-mail-test \
+	--destdir=$PKG
 
 make install DESTDIR=$PKG 
-#make install-daemon-conf DESTDIR=$PKG
+make install-daemon-conf DESTDIR=$PKG
 
 }
