@@ -1,6 +1,7 @@
 # Description: Package management tool for CRUX
 # URL:         http://www.varlock.com
 # Maintainer:  CRUX System Team, core-ports at crux dot nu
+# Depends on: wget
 
 name=pkg-get
 version=0.4.8
