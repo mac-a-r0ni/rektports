@@ -18,7 +18,7 @@ build() {
 	--destdir=$PKG
 
 make
-make install DESTDIR=$PKG 
+make install DESTDIR=$PKG
 make install-daemon-conf DESTDIR=$PKG
 
 rm -rf $PKG/usr/share/man/man5

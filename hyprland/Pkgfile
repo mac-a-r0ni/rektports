@@ -4,7 +4,7 @@
 # Depends on: cairo xorg-gccmakedep libdisplay-info libdrm libglvnd xorg-xf86-input-libinput libliftoff xorg-libx11 xorg-libxcb xorg-libxcomposite xorg-libxfixes libxkbcommon xorg-libxrender mesa pango xorg-libpixman polkit seatd wayland wayland-protocols xorg-xcb-proto xorg-xcb-util xorg-xcb-util-error xorg-xcb-util-keysyms xorg-xcb-util-renderutil xorg-xcb-util-wm xorg-xinput xorg-xwayland cmake gdb meson ninja vulkan-headers xorg-xorgproto
 
 name=hyprland
-version=0.29.0
+version=0.29.1
 release=1
 source=(https://github.com/hyprwm/Hyprland/releases/download/v${version}/source-v${version}.tar.gz)
 
