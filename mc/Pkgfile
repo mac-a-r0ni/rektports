@@ -1,0 +1,35 @@
+# Description: GNU Midnight Commander
+# URL: https://www.midnight-commander.org
+# Maintainer: Juergen Daubert, jue at crux dot nu
+# Depends on: glib aspell xorg
+
+name=mc
+version=4.8.30
+release=1
+source=(https://ftp.osuosl.org/pub/midnightcommander/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+
+	./configure \
+		--prefix=/usr \
+		--libexecdir=/usr/lib \
+		--disable-nls \
+		--with-screen=ncurses \
+		--enable-extcharset \
+		--enable-netcode \
+		--enable-background \
+		--enable-charset \
+		--enable-aspell \
+		--with-ext2undel \
+		--with-x=yes \
+		--with-vfs \
+		--enable-vfs-smb \
+		--with-smb-configdir=/etc/samba \
+		--with-smb-codepagedir=/etc/codepages
+
+	make
+	make DESTDIR=$PKG install
+
+	rm $PKG/usr/lib/mc/*/README*
+}
