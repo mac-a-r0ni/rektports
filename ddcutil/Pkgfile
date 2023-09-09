@@ -1,0 +1,19 @@
+# Description: query & edit monitor settings using DDC/CI and USB
+# URL: http://ddcutil.com/
+# Maintainer: mac-a-r0ni, j at lngn dot net
+# Depends on: glib i2c-tools kmod libdrm libusb xorg-libxrandr
+
+name=ddcutil
+version=1.4.1
+release=1
+source=(https://github.com/rockowitz/$name/archive/v$version/$name-$version.tar.gz)
+
+build() {
+  cd $name-$version
+  ./autogen.sh
+  ./configure --prefix=/usr \
+  --libexecdir=/usr/lib/$name \
+  --libdir=/usr/lib
+  make
+  make DESTDIR=$PKG install
+}

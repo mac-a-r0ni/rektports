@@ -1,0 +1,21 @@
+# Description: Send file to trash natively under Mac OS X, Windows and Linux
+# URL: https://pypi.python.org/pypi/Send2Trash
+# Maintainer: mac-a-r0ni, j at lngn dot net
+# Depends on: python3
+
+name=python3-send2trash
+version=1.8.2
+release=1
+source=(https://files.pythonhosted.org/packages/4a/d2/d4b4d8b1564752b4e593c6d007426172b6574df5a7c07322feba010f5551/Send2Trash-1.8.2.tar.gz)
+
+build() {
+	cd Send2Trash-$version
+
+	python setup.py build
+	python setup.py install \
+	--prefix=/usr \
+	--root=$PKG \
+	--skip-build
+	find $PKG -name '*egg-info' -exec rm -rf {} +
+
+}
