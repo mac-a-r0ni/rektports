@@ -1,7 +1,7 @@
 # Description: GNU Midnight Commander
 # URL: https://www.midnight-commander.org
 # Maintainer: Juergen Daubert, jue at crux dot nu
-# Depends on: glib aspell xorg
+# Depends on: glib aspell xorg gpm
 
 name=mc
 version=4.8.30
@@ -20,7 +20,7 @@ build() {
 		--enable-netcode \
 		--enable-background \
 		--enable-charset \
-		--enable-aspell \
+		--with-gpm-mouse \
 		--with-ext2undel \
 		--with-x=yes \
 		--with-vfs \
