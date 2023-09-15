@@ -6,7 +6,6 @@ d:ufw
 d:xdg-desktop-portal-hyprland
 d:ncdu-x86_64
 d:hyprpaper
-d:gh
 d:ncdu-aarch64
 d:hyprland
 d:libdisplay-info
@@ -43,9 +42,6 @@ f:92d30a938d3cf2ea8e94cbde9024554f:ncdu-x86_64/ncdu.1.gz
 f:133ccfa1d19752577aa26a247c40afc0:hyprpaper/.footprint
 f:0ac4a42bd7e05498193196bd5d7d4dea:hyprpaper/.md5sum
 f:3310e53e0553f90ac1c065b7bd343a06:hyprpaper/Pkgfile
-f:ebcff7df2a3d268458d21f348f732375:gh/.footprint
-f:2cfacf714996649cf1c4b45236fa226d:gh/.md5sum
-f:0da202cde62f6eb753a7b9deba9ac76a:gh/Pkgfile
 f:3765586fe37e9002a781bae8f35a9bc6:ncdu-aarch64/.footprint
 f:992224eac79477eb1c653e149d0f3931:ncdu-aarch64/.md5sum
 f:93d8c842a934cfa7fde8d7b4b5319226:ncdu-aarch64/Pkgfile
