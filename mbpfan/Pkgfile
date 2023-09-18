@@ -1,0 +1,19 @@
+# Description: SMC fan controller software for vairous MacBook models
+# URL: https://github.com/davidfoxcroft/mbpfan/
+# Maintainer: mac-a-r0ni, j at lngn dot net
+# Depends on:
+
+name=mbpfan
+version=2.3.0
+release=1
+source=(https://github.com/davidfoxcroft/mbpfan/archive/v{$version}/$name-$version.tar.gz)
+
+build() {
+  cd $name-$version
+
+make
+make DESTDIR=$PKG install
+
+rm -rf $PKG/usr/share/doc
+
+}
