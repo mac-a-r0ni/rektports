@@ -27,7 +27,9 @@ f:3765586fe37e9002a781bae8f35a9bc6:ncdu-x86_64/.footprint
 f:92d30a938d3cf2ea8e94cbde9024554f:ncdu-x86_64/ncdu.1.gz
 f:63c5235346de4de2add1c153a08248ae:ncdu-x86_64/.md5sum
 f:321ed689abc037b37e83057b1187be46:ncdu-x86_64/Pkgfile
-f:fc28ac712dc08ad430cd91d36998ae97:mbpfan/Pkgfile
+f:12dab7dfc6f64dcc520afa4c3e6ff934:mbpfan/.footprint
+f:b71ec3de8c38f10566da4816d65091a8:mbpfan/.md5sum
+f:df08462b1eb226d03d6cdafaa35bd6f1:mbpfan/Pkgfile
 f:7f55401b45faf6062342913a9399557e:mugshot/.footprint
 f:2fe3464860746592c42d1be26485c0af:mugshot/.md5sum
 f:632700b81f83bb7887f29233d58de7a2:mugshot/Pkgfile
@@ -67,13 +69,15 @@ f:76c168a0271cb57d2539a10877979fbd:broadcom-wl/002-rdtscl.patch
 f:7d860b919998e247ebfd04b322e81414:broadcom-wl/011-linux59.patch
 f:471f0172d6b4b31f69490e25be8fb61f:broadcom-wl/014-linux414.patch
 f:eedf436ad75d278ff783055310095f70:broadcom-wl/015-linux600.patch
+f:a4261d25bc8a79f6ba7b42070d14faa7:broadcom-wl/.footprint
 f:399b465a6240575062da139f07c85154:broadcom-wl/013-linux518.patch
 f:c5074307a37698b11780237beb8f52b2:broadcom-wl/003-linux47.patch
 f:2ffbab582f9dd2b5c8af045f8d8f29c7:broadcom-wl/007-linux412.patch
 f:45a2e556ac496a4a01172003b478ca5d:broadcom-wl/004-linux48.patch
 f:39f154dac0e88c6998fe5cbe0c5588df:broadcom-wl/010-linux56.patch
+f:e3675626db5cad23535589bfbfd2f723:broadcom-wl/.md5sum
 f:398815065cb4a573906f00a877b6c111:broadcom-wl/008-linux415.patch
-f:4cee81148b7bf4d14394bd34cca0c008:broadcom-wl/Pkgfile
+f:02c95bea7a01b70fa76c818d6ea3f999:broadcom-wl/Pkgfile
 f:28a46caad877bc4d04cd33a5232d9d99:broadcom-wl/006-linux411.patch
 f:2a8e49769de4497153a30e79d6cf04c0:broadcom-wl/016-linux601.patch
 f:fabbf528164f5e3a9dcf46f46a678f86:broadcom-wl/001-null-pointer-fix.patch
