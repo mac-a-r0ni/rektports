@@ -2,7 +2,6 @@ d:ddcutil
 d:python3-send2trash
 d:ncdu-x86_64
 d:mbpfan
-d:mugshot
 d:libdisplay-info
 d:brightnessctl
 d:hyprland
@@ -30,9 +29,6 @@ f:321ed689abc037b37e83057b1187be46:ncdu-x86_64/Pkgfile
 f:12dab7dfc6f64dcc520afa4c3e6ff934:mbpfan/.footprint
 f:b71ec3de8c38f10566da4816d65091a8:mbpfan/.md5sum
 f:df08462b1eb226d03d6cdafaa35bd6f1:mbpfan/Pkgfile
-f:7f55401b45faf6062342913a9399557e:mugshot/.footprint
-f:2fe3464860746592c42d1be26485c0af:mugshot/.md5sum
-f:632700b81f83bb7887f29233d58de7a2:mugshot/Pkgfile
 f:0dc0b6debe672378e59fe53b02db362c:libdisplay-info/.footprint
 f:a9420b0dd6952a897a250622cd2f2cf8:libdisplay-info/.md5sum
 f:8a7ab63d9f77e77812d7b3f538a22a12:libdisplay-info/Pkgfile
