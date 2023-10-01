@@ -1,0 +1,42 @@
+# Description: Provides support for web applications using the Chromium browser project
+# URL: https://www.qt.io/
+# Maintainer: Tim Biermann, tbier at posteo dot de
+# Depends on: cups ffmpeg icu libevent libva libvpx libwebp minizip nodejs nss pciutils python3-html5lib python3-six qt6-positioning qt6-tools qt6-webchannel re2 snappy xorg-libxcomposite xorg-libxcursor
+# Optional: dav1d fdk-aac gnutls graphite2 keyutils krb5 lame lcms2 libpcre2 libvdpau numactl pipewire x264 x265
+
+name=qt6-webengine
+version=6.5.3
+release=1
+source=(https://download.qt.io/official_releases/qt/${version%.*}/$version/submodules/qtwebengine-everywhere-src-$version.tar.xz
+0001-ARM-toolchain-fixes.patch
+0002-Run-blink-bindings-generation-single-threaded.patch)
+
+build() {
+  prt-get isinst krb5 && PKGMK_QT6+=' -D QT_FEATURE_webengine_kerberos=ON'
+  prt-get isinst pipewire && PKGMK_QT6+=' -D QT_FEATURE_webengine_webrtc_pipewire=ON'
+
+  # use ccache if found on system and in PATH, else use sccache if found on system
+  prt-get isinst ccache && echo "${PATH}" | grep '/usr/lib/ccache' && \
+    PKGMK_QT6+=' -D QT_USE_CCACHE=ON' && PATH="$(echo ${PATH} | awk -v RS=: -v ORS=: '/ccache/ {next} {print}' | sed 's/:*$//')"
+  prt-get isinst sccache && echo "${PATH}" | grep --invert-match '/usr/lib/ccache' && \
+    PKGMK_QT6+=' -D CMAKE_C_COMPILER_LAUNCHER=sccache -D CMAKE_CXX_COMPILER_LAUNCHER=sccache'
+
+cd "$SRC/qtwebengine-everywhere-src-$version/src/3rdparty"
+  patch -p1 -i ${srcdir}/0001-ARM-toolchain-fixes.patch
+  patch -p1 -i ${srcdir}/0002-Run-blink-bindings-generation-single-threaded.patch
+
+  PYTHON=/usr/bin/python3 \
+  cmake -S qtwebengine-everywhere-src-$version -B build -G Ninja $PKGMK_QT6 \
+    -D CMAKE_BUILD_TYPE=Release \
+    -D CMAKE_CXX_FLAGS_RELEASE="$CXXFLAGS" \
+    -D CMAKE_C_FLAGS_RELEASE="$CFLAGS" \
+    -D CMAKE_TOOLCHAIN_FILE=/usr/lib/cmake/Qt6/qt.toolchain.cmake \
+    -D QT_FEATURE_webengine_system_ffmpeg=ON \
+    -D QT_FEATURE_webengine_system_icu=ON \
+    -D QT_FEATURE_webengine_system_libevent=ON \
+    -D QT_FEATURE_webengine_proprietary_codecs=ON \
+    -D QT_FEATURE_webengine_system_re2=OFF \
+    -Wno-dev
+  cmake --build build
+  DESTDIR=$PKG cmake --install build
+}
