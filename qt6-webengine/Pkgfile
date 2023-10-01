@@ -21,9 +21,8 @@ build() {
   prt-get isinst sccache && echo "${PATH}" | grep --invert-match '/usr/lib/ccache' && \
     PKGMK_QT6+=' -D CMAKE_C_COMPILER_LAUNCHER=sccache -D CMAKE_CXX_COMPILER_LAUNCHER=sccache'
 
-cd "$CWD/qtwebengine-everywhere-src-$version/src/3rdparty"
-  patch -d -p1 -i $SRC/0001-ARM-toolchain-fixes.patch
-  patch -d -p1 -i $SRC/0002-Run-blink-bindings-generation-single-threaded.patch
+  patch -d qtwebengine-everywhere-src-$version -p1 -i $SRC/0001-ARM-toolchain-fixes.patch
+  patch -d qtwebengine-everywhere-src-$version -p1 -i $SRC/0002-Run-blink-bindings-generation-single-threaded.patch
 
   PYTHON=/usr/bin/python3 \
   cmake -S qtwebengine-everywhere-src-$version -B build -G Ninja $PKGMK_QT6 \
