@@ -12,9 +12,9 @@ build() {
   cd $name-$version
 
 mkdir -p build
-#cd build
+cd build
 
-  cmake build .. \
+  cmake .. \
   -DCMAKE_BUILD_TYPE=Release \
   -DPREFIX=/usr \
   -DCMAKE_INSTALL_PREFIX=/ \
