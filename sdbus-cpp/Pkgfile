@@ -1,0 +1,32 @@
+# Description: 
+# URL: 
+# Maintainer: mac-a-r0ni, j at lngn dot net
+# Depends on: 
+
+name=sdbus-cpp
+version=1.3.0
+release=1
+source=(https://github.com/Kistler-Group/sdbus-cpp/archive/refs/tags/v1.3.0/sdbus-cpp-1.3.0.tar.gz)
+
+build() {
+  cd $name-$version
+
+mkdir -p build
+#cd build
+
+  cmake build .. \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DPREFIX=/usr \
+  -DCMAKE_INSTALL_PREFIX=/ \
+  -DBUILD_DOC=OFF \
+  -DBUILD_TESTS=OFF \
+  -DBUILD_SHARED_LIBS=ON \
+  -DBUILD_LIBSYSTEMD=OFF \  
+  -DBUILD_EXAMPLES=OFF
+    
+make
+make install DESTDIR=$PKG
+          
+
+
+}
